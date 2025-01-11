@@ -1,0 +1,253 @@
+/* Root Theme Variables */
+:root {
+    --background: #ffffff;
+    --text-color: #333333;
+    --button-background: #007bff;
+    --button-hover: #0056b3;
+    --card-background: #f9f9f9;
+    --border-color: #e0e0e0;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --background: #1e1e1e;
+    --text-color: #f0f0f0;
+    --button-background: #1f6feb;
+    --button-hover: #104a8f;
+    --card-background: #2a2a2a;
+    --border-color: #444444;
+}
+
+/* Global Reset */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: var(--background);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 0 15px;
+}
+
+/* Container Styling */
+.container {
+    width: 100%;
+    max-width: 700px; /* Slightly larger for better balance */
+    padding: 40px;
+    background: var(--card-background);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Header Styling */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    margin-bottom: 20px;
+}
+
+.theme-toggle button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: var(--button-background);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.theme-toggle button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+}
+
+/* Add Task Form */
+.add-task-form {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.add-task-form input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-color);
+    background: var(--card-background);
+    transition: border-color 0.3s;
+    min-width: 260px;
+}
+
+.add-task-form input:focus {
+    outline: none;
+    border-color: var(--button-background);
+}
+
+.add-task-form button {
+    padding: 12px 25px;
+    background-color: var(--button-background);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-task-form button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+}
+
+/* Task List */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-list li {
+    display: flex; /* Use flexbox for proper alignment */
+    flex-direction: column;
+    justify-content: space-between; /* Space between elements */
+    align-items: center; /* Vertically center the content */
+    padding: 15px;
+    margin-bottom: 10px;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.task-list li:hover {
+    transform: scale(1.02);
+}
+
+.task-list .task {
+    flex: 1; /* Allow the task description to take available space */
+    margin-left: 10px;
+    font-size: 1rem;
+    color: var(--text-color);
+    text-align: left;
+    word-break: break-word; /* Prevent text overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+}
+
+.task-list .meta-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.task-list .due-date {
+    font-size: 0.9rem;
+    color: gray;
+    white-space: nowrap; /* Prevent wrapping */
+    margin-right: 10px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* Priority Badges */
+.importance {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 8px;
+    text-transform: capitalize;
+    font-size: 0.85rem;
+    display: inline-block;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.importance.high {
+    background-color: red;
+    color: white;
+}
+
+.importance.medium {
+    background-color: orange;
+    color: white;
+}
+
+.importance.low {
+    background-color: green;
+    color: white;
+}
+
+/* Delete Button */
+.delete-button {
+    padding: 8px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+.delete-button:hover {
+    background-color: #b02a37;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .add-task-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .task-list li {
+        grid-template-columns: 40px 1fr auto;
+        gap: 5px;
+    }
+
+    .task-list .due-date {
+        font-size: 0.8rem;
+    }
+
+    .add-task-form input,
+    .add-task-form button {
+        width: 100%;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
